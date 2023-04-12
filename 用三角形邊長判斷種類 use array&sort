@@ -1,0 +1,27 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int arr[3], a, b, c;
+int main() {
+	cout << "請輸入三角形的三邊長\n";
+	cin >> arr[0] >> arr[1] >> arr[2];
+	sort(arr, arr + 3);
+	a = arr[0];
+	b = arr[1];
+	c = arr[2];
+	if (a + b > c and a + c > b and b + c > a) {
+		if (a * a + b * b == c * c) {
+			cout << "直角三角形\n";
+		}
+		else if (a * a + b * b > c * c) {
+			cout << "銳角三角形\n";
+		}
+		else if (a * a + b * b < c * c) {
+			cout << "鈍角三角形\n";
+		}
+	}
+	else {
+		cout << "不構成三角形\n";
+	}
+}
