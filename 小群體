@@ -1,0 +1,43 @@
+#include <iostream>
+#include <array>
+using namespace std;
+
+int main() {
+	int n, next, count = 0, fri1[50001], fri2[50001], guest[50001];
+	for (int i = 0; i < 1000; i++) fri1[i] = 0;  //初始化群體名單陣列
+  cout << "輸入此團體人數\n";
+	while (cin >> n) {  //當輸入n個團員後，繼續執行以下程式
+    cout << "自己的編號=>     ";
+		for (int i = 0; i < n; i++) {
+			cout << i << " ";  //從首位到末位依序列出每個團員
+		}
+    cout << endl;
+    cout << "從首位到最後位輸入對應的好友編號" << endl;
+		for (int i = 0; i < n; i++) {
+			cin >> fri1[i];
+      guest[i] = 0;
+			//for (int j = 0; j<n ; j++){
+			  //nameList
+			//}
+		}
+    //cout << "配對的好友編號=> " << fri1 << endl;  //把使用者指定的團員編號依序輸出
+    cout << endl;
+		for (int i = 0; i < n; i++) {
+			if (guest[i] == 0) {  //沒有拜訪過
+				if (fri1[i] == i) {  //好朋友只有自己
+					count++;
+					guest[i] = 1;
+				}
+				else {
+					next = i;
+					do {
+						guest[next] = 1;
+						next = fri1[next];
+					} while (guest[next] == 0);
+					count++;
+				}
+			}
+		}
+		cout << "共有" << count << "個群體" << endl;
+	}
+}
