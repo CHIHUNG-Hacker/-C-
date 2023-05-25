@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+//這個遊戲有幾(n)個人玩
+//第幾(m)個人會爆炸，而且只會爆炸k次
+
+int main()
+{
+	int n, m, k;
+	cin >> n >> m >> k;
+	k = k++;
+    vector<int> num(n);
+    for (int i = 0; i < n; i++) {
+		num[i] = i + 1;
+		}
+	int ans = 0;
+	for (int i = 0; i < k; i++) {
+		ans = (ans - 1 + m) % num.size();
+		num.erase(num.begin() + ans);
+		}
+	if (ans == num.size()) {
+		cout << num[0];
+		}
+	else {
+		cout << num[ans];
+	}
+}
